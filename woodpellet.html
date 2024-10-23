@@ -7,7 +7,6 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 </head>
 <body>
-    
     <div id="app">
         <table class="table table-hover">
             <thead>
@@ -27,24 +26,44 @@
                 </tr>
             </thead>
             <tbody>
-                <tr v-for="item in items" :key="item.Id">
+                <tr v-for="item in items">
                     <td>
-                        {{item.Id}}
+                        {{item.id}}
                     </td>
                     <td>
-                        {{item.Brand}}
+                        {{item.brand}}
                     </td>
                     <td>
-                        {{item.Price}}
+                        {{item.price}}
                     </td>
                     <td>
-                        {{item.Quality}}
+                        {{item.quality}}
                     </td>
                 </tr>
             </tbody>
         </table>
-        
-    </body>
-</div>
+        <h2>Add new item</h2>
+        <form @submit.prevent="addItems">
+            <label for="brand">Brand:</label>
+            <input type="text" v-model="newItem.brand" id="brand" required>
+    
+            <label for="price">Price:</label>
+            <input type="number" v-model="newItem.price" id="price" required>
+    
+            <label for="quality">Quality:</label>
+            <input type="number" v-model="newItem.quality" id="quality" required>
+            <button class="btn btn-success" type="submit">Add new item</button>
+        </form>
+        <div class="row">
+            <div class="col-1">
+                <form @submit.prevent="deleteItem">
+                    <label for="delete">Slet</label>
+                    <input class="form-control" type="number" v-model="deleteId" id="delete">
+                    <button class="btn btn-danger" type="submit">Slet</button>
+                </form>
+            </div>
+        </div>
+        </div>
+</body>
 <script src="woodpelletAPP.js"></script>
 </html>
